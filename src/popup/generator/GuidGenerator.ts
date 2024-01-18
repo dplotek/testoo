@@ -1,16 +1,15 @@
-import Generator from "./Generator.js";
+import {randomString} from "@src/popup/generator/Generator";
 
-export default class GuidGenerator extends Generator {
-    getValue(): string {
-        let result: Array<string> = [];
-        let lengths: Array<number> = [8, 4, 4, 4, 8];
+const Characters = '0123456789ABCDEF';
 
-        for (let i = 0; i < 5; i++) {
-            result.push(this.randomString(lengths[i], GuidGenerator.Characters));
-        }
+export function getValue(): string {
+    let result: Array<string> = [];
+    let lengths: Array<number> = [8, 4, 4, 4, 8];
 
-        return result.join('-');
+    for (let i = 0; i < 5; i++) {
+        result.push(randomString(lengths[i], Characters));
     }
 
-    static Characters = '0123456789ABCDEF';
+    return result.join('-');
 }
+
