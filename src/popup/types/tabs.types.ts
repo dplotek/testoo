@@ -1,0 +1,5 @@
+export enum TabsEnum {
+  FAVOURITES = "FAVOURITES",
+  COMPANY = "COMPANY",
+  PERSONAL_DATA = "PERSONAL_DATA"
+}

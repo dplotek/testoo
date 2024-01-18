@@ -1,24 +1,20 @@
-import { Logo } from '@assets/img/logo';
+import { useState } from 'preact/hooks';
+import Layout from "./components/layout/Layout";
+import Tabs from "./components/tabs/Tabs";
+import { TabsEnum } from './types/tabs.types';
+import Section from './components/section/Section';
 
 const Popup = () => {
+  const [tab, setTab] = useState<TabsEnum>(TabsEnum.FAVOURITES)
+  const handleSetTab = (val: TabsEnum) => setTab(val)
+
   return (
-    <div class='w-full bg-[#673ab8] p-8 text-center text-lg'>
-      <Logo />
-      <p class='text-white'>Hello Vite + Preact!</p>
-      <p class='text-white'>
-        <a
-          class='border-b-2'
-          href='https://preactjs.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn Preact
-        </a>
-      </p>
-      <p data-testid='popup_text' class='p-6 text-3xl text-purple-400'>
-        Pop up page
-      </p>
-    </div>
+    <Layout>
+      <Tabs activeTab={tab} onClick={handleSetTab} />
+      <Section title='Pesel' value='123456789'>
+        <p>tutaj będzie formularz</p>
+      </Section>
+    </Layout>
   );
 };
 
